@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="custom_mrp_bom_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.bom.form.inherit</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group/field[@name='code']"
+                       position="before">
+                    <field name="price_total" string="Prix de vente"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='components']/field[@name='bom_line_ids']/tree/field[@name='product_uom_id']"
+                       position="after">
+                    <field name="price_unit" optional="show"/>
+                    <field name="price_subtotal" optional="show"/>
+                </xpath>
+                <xpath expr="//notebook/page[@name='components']/field[@name='bom_line_ids']"
+                       position="after">
+                    <div style="text-align:right; font-weight: bold;">
+                        TOTAL :
+                        <field name="price_total" sum="Total" decoration-bf="1" optional="show"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        <record id="custom_mrp_bom_tree_inherit" model="ir.ui.view">
+            <field name="name">mrp.bom.tree.inherit</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='product_id']"
+                       position="after">
+                    <field name="price_total" string="Prix de vente"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
