@@ -8,10 +8,6 @@
     'description': """
         Add product sale price from bom
     """,
-
-    "author": "Swintoo",
-    'maintainer': 'Swintoo',
-    'website': "https://swintoo.com",
     'category': 'Uncategorized',
     'version': '0.1',
 
